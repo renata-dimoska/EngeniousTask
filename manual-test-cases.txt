@@ -1,0 +1,89 @@
+T1: User logs in with valid credentials
+Preconditions:
+-	User should be registered on Engenious University
+
+Test steps:
+1.	Navigate to the Engenious University login page (https://university.engenious.io/)
+2.	Click on the “Sign In” button => User should be redirected to the "Registration" page
+3.	Click on the “Login” link => User should be redirected to the "Login" page
+4.	Enter a valid email address in the “Email” field
+5.	Enter a valid password in the “Password” field
+6.	Click on the “Login” button
+
+Expected result:
+-	User should be successfully logged in and redirected to the dashboard.
+-	The login form data (email and password) should be transmitted securely over HTTPS
+
+T2: User logs in using Discord option
+Preconditions:
+-	User should have Discord account
+-	User should be registered on Engenious University
+
+Test steps:
+1.	Navigate to the Engenious University login page (https://university.engenious.io/)
+2.	Click on the “Sign In” button => User should be redirected to the "Registration" page
+3.	Click on the “Login” link => User should be redirected to the "Login" page
+4.	Click on the “Login with Discord” button => New tab to authorize the Discord account should open
+5.	Click on the “Authorize” button
+
+Expected result:
+-	User should be successfully logged in and redirected to the dashboard.
+-	The page should still begin with https:// and not http://
+
+T3: User resets its password using “Forgot password” functionality
+Preconditions:
+-	User should be registered on Engenious University
+
+Test steps:
+1.	Navigate to the Engenious University login page (https://university.engenious.io/)
+2.	Click on the “Sign In” button => User should be redirected to the "Registration" page
+3.	Click on the “Login” link => User should be redirected to the "Login" page
+4.	Click on the "Forgot password" button => User should be redirected to the "Forgot password" page
+5.	Enter a valid email address in the “Email” field
+6.	Click on the "Reset password" button => ‘We have sent you a password recovery link to “user's email address”’ message should appear
+7.	Log in to the email account of the user
+8.	Open the recovery email
+9.	Click on the "Reset my password" button => User should be redirected to the "Create new password" page
+10.	Enter new password in the "New password" field => The system should make sure that the new password follows the password requirements (minimum length, using uppercase and lowercase letters, minimum one digit) to guarantee it is strong and secure
+11.	Enter the same password in the "Repeat password" field
+12.	Click on the "Update password" button
+
+Expected result:
+-	User should be successfully logged in and redirected to their dashboard
+-	User should not be able to access the account with the old password
+
+T4: User reaches rate limit after multiple failed login attempts
+Preconditions:
+-	User should be registered on Engenious University
+
+Test steps:
+1.	Navigate to the Engenious University login page (https://university.engenious.io/)
+2.	Click on the “Sign In” button => User should be redirected to the "Registration" page
+3.	Click on the “Login” link => User should be redirected to the "Login" page
+4.	Enter a valid email address in the “Email” field
+5.	Enter an invalid password in the “Password” field
+6.	Click on the “Login” button => An "Invalid credentials!" error message should appear (avoid specifying which credentials)
+7.	Repeat steps 4-6 multiple times (e.g., 11 attempts in 1 minute)
+
+Expected result:
+-	The application should display an error message, such as "Invalid credentials!" for the failed attempts
+-	Further login attempts should be temporary blocked
+-	After the temporary lockout period, login functionality should be restored and the user should successfully log in with valid credentials
+
+T5: User logs in leaving email and password fields empty
+Preconditions:
+-	User should be registered on Engenious University
+
+Test steps:
+1.	Navigate to the Engenious University login page (https://university.engenious.io/)
+2.	Click on the “Sign In” button => User should be redirected to the "Registration" page
+3.	Click on the “Login” link => User should be redirected to the "Login" page
+4.	Leave the email field empty
+5.	Leave the password field empty
+6.	Click on the “Login” button
+
+Expected result:
+-	"Email address is required" warning text should be displayed under the email field
+-	"Password is required" warning text should be displayed under the password field
+-	System should prevent the submission of empty fields, avoiding unnecessary requests from being sent
+-	The user should not be logged in and should remain on the login page
