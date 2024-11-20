@@ -13,10 +13,6 @@ End-to-end.
 
 - `tests` - This directory contains all the test files for the project.
 
-## Viewing results
-
-Test runs are logged both as videos and traces in the `test-results` folder.
-
 # Manual task
 
 - `manual-test-cases.txt` contains the P0 test cases for the login flow in a structured format.
